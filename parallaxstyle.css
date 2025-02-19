@@ -1,0 +1,115 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* best practice to write all these things in universal selector */
+
+#wrapper{
+    height:100vh;
+    /* height humne wrapper ki de di jitni height hamare viewport ki hai that is 100vh  */
+    /* maximum height of viewport is 100vh isliye humne yahaan 100vh height di hai */
+    overflow-x: hidden;
+    /* since humey right direction mein scroll nhi karna hai isliye humne overflow-x:hidden de diya hai */
+    /* overflow-y: auto; */
+    /* y direction matlab niche ki direction mein toh humey scroll karna hi hai isliye usey auto kar diya  */
+    perspective: 10px;
+    /* z=0 plane aur aapki aankhon ke bich ka distance hi perspective hai jo ki humey set karna pdega aur usey kuch bhi value de sakte hain */
+    /* persperctive ko on karna pdega hamey  */
+}
+
+/* jab bhi hamey do images ko overlap karna ho toh hum absolute positioning use karte hain jese yahaan hamey foreground image aur background image ko overlap karvana hai */
+.container{
+    position: relative;
+    /* yahaan hamne iski position relative isliye di hai kyuki background image aur foreground image ko overlap karne ke liye through absolute positioning humey uske nearest positioned ancestor(parent) ki value non-static deni padegi (that is ki static ko chord ke kuch bhi position de sakte hain toh humne yahaan relative position de di hai isey)   */
+    display: flex;
+    /* flex banane ke liye display ko flex kar diya  */
+    justify-content: center;
+    align-items: center;
+    /* center mein elements ko place karne ke liye justify-content aur align-items ko center kar denge ab iss se hamara adventure jo hai vo center mein aa jaega  */
+    height: 100%;
+    transform-style: preserve-3d;
+    /* 3-d game ko include karane ke liye humey ye property use karni padegi that is transform-style: preserve-3d */
+    z-index: -1;
+    /* z-index use karte hain ye batane ke liye ki konsi layer kispe upar aane waali hai */
+}
+
+.background{
+    transform: translateZ(-40px) scale(5);
+    /* translateZ se background image jo hai 40 pixel dur chali jaegi (aisa hum parallax effect generate karne ke liye kar rhe hain)toh hmey aisa lagega image choti ho gyi hai par vo dur hai toh image ko bada karne ke liye hum scale use karenge uss se image pass nhi aaegi par badi ho jaegi */
+}
+
+.foreground{
+    transform: translateZ(-20px) scale(3);
+}
+
+.background, .foreground{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    /* iss waale z-index se adventure hamara upar aa jaega images ke */
+    object-fit: cover;
+    /* iss se image pura widdth cover kar legi */
+}    
+
+h1{
+    position: absolute;
+    top: 5rem;
+    font-size: 8rem;
+    letter-spacing: 4px;
+    color: white;
+    text-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+section{
+    background-color: rgb(45,45,45);
+    color: white;
+    padding: 5rem 0;
+}
+
+.secHeading{
+    font-size: 5rem;
+    padding: 0 10rem;
+}
+
+.text{
+    font-size: 1.5rem;
+    padding:0 10rem ;
+    margin: 5rem 0;
+}
+
+.bg{
+    position: relative;
+    width: 100%;
+    background-attachment: fixed;
+    /* background-attachment se image fix ho jaati hai baaki chizein scroll hoti hain  */
+    background-size: cover;
+    /* background-image hamare viewport ko completely cover kare isliye isey use kia hai */
+    background-position: center;
+    height: 500px;
+}
+
+.desc{
+    position: absolute;
+    background-color: white;
+    padding: 0.5rem 2.5rem;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    color: black;
+    font-size: 3.5rem;
+    font-weight: 600;
+}
+
+.bg1{
+    background-image: url(sport-1.jpg);
+}
+
+.bg2{
+    background-image: url(sport-2.jpg);
+}
+
+.bg3{
+    background-image: url(sport-3.jpg);
+}
